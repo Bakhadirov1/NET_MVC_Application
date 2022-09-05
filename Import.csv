@@ -1,0 +1,10 @@
+EmployeeId,Name,LastName,DateOfBirth,PhoneNumber,Email,Address,City,PositionId,PositionName,ProjectId,ProjectName
+6,Sandra ,Ermakova,1999-06-04,+998922222222,SandraErmakova@teleworm.us,Yakkasaroy,Samarkand,8,Blogger,2,Namuna dev
+8,Sandra ,Ermakova,1999-06-04,+998922222222,SandraErmakova@teleworm.us,Yakkasaroy,Samarkand,8,Blogger,2,Namuna dev
+9,Murat ,Zuyev,1995-05-05,+998991111111,MuratZuyev@armyspy.com,Yakkasaroy Alisher Novoiy street 16B,Samarkand,3,Graphic designer,2,Namuna dev
+10,Ivan ,Valiyev,1989-12-12,+998991111122,IvanV@armyspy.com,Yakkasaroy Bekobod street,Samarkand,3,Graphic designer,2,Namuna dev
+12,Abdulatif,Isaev,1996-12-12,+998999988228,IsaevAbdu@armyspy.com,Amir Temur street 22A,Tashkent,3,Graphic designer,2,Namuna dev
+16,Murat ,Zuyev,1995-05-05,+998991111111,MuratZuyev@armyspy.com,Yakkasaroy Alisher Novoiy street 16B,Samarkand,3,Graphic designer,2,Namuna dev
+15,Ivan ,Valiyev,1989-12-12,+998991111122,IvanV@armyspy.com,Yakkasaroy Bekobod street,Samarkand,3,Graphic designer,2,Namuna dev
+13,Abdulatif,Isaev,1996-12-12,+998999988228,IsaevAbdu@armyspy.com,Amir Temur street 22A,Tashkent,3,Graphic designer,2,Namuna dev
+14,Tolib,Arslanov,2001-09-09,+998901002020,Arslanov@armyspy.com,Amir Temur street Yunusobod,Tashkent,3,Graphic designer,2,Namuna dev

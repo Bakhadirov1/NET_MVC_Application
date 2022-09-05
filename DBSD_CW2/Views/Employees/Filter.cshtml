@@ -1,0 +1,208 @@
+﻿@model DBSD_CW2.Models.EmployeeFilter
+@using X.PagedList.Mvc.Core
+@using X.PagedList;
+
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h1>Employees</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <p class="col-2">
+            @Html.ActionLink("import XML", "ImportXML")
+        </p>
+        <p class="col-2">
+            @Html.ActionLink("import JSON", "ImportJSON", new { Page = Model.Page, SortColName = Model.SortColName, ColAsc = Model.ColAsc, Name = Model.Name, LastName = Model.LastName, DateOfBirth = Model.DateOfBirth, PhoneNumber = Model.PhoneNumber, PositionId = Model.PositionId, ProjectId = Model.ProjectId })
+        </p>
+        <p class="col-2">
+            @Html.ActionLink("import CSV", "ImportCSV", new { Page = Model.Page, SortColName = Model.SortColName, ColAsc = Model.ColAsc, Name = Model.Name, LastName = Model.LastName, DateOfBirth = Model.DateOfBirth, PhoneNumber = Model.PhoneNumber, PositionId = Model.PositionId, ProjectId = Model.ProjectId })
+        </p>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <p class="col-2">
+            @Html.ActionLink("export in XML", "exportXML", new { Page = Model.Page, SortColName = Model.SortColName, ColAsc = Model.ColAsc, Name = Model.Name, LastName = Model.LastName, DateOfBirth = Model.DateOfBirth, PhoneNumber = Model.PhoneNumber, PositionId = Model.PositionId, ProjectId = Model.ProjectId })
+        </p>
+        <p class="col-2">
+            @Html.ActionLink("export in JSON", "exportJSON", new { Page = Model.Page, SortColName = Model.SortColName, ColAsc = Model.ColAsc, Name = Model.Name, LastName = Model.LastName, DateOfBirth = Model.DateOfBirth, PhoneNumber = Model.PhoneNumber, PositionId = Model.PositionId, ProjectId = Model.ProjectId })
+        </p>
+        <p class="col-2">
+            @Html.ActionLink("export in CSV", "exportCSV", new { Page = Model.Page, SortColName = Model.SortColName, ColAsc = Model.ColAsc, Name = Model.Name, LastName = Model.LastName, DateOfBirth = Model.DateOfBirth, PhoneNumber = Model.PhoneNumber, PositionId = Model.PositionId, ProjectId = Model.ProjectId })
+        </p>
+    </div>
+</div>
+<form asp-action="Filter" method="get">
+    <div class="form-inline my-2">
+        <div class="form-group">
+            @Html.TextBox("Name", "", new { @class = "form-control mx-2", placeholder = "Name" })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("LastName", "", new { @class = "form-control mx-2", placeholder = "Last name" })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("PhoneNumber", "", new { @class = "form-control mx-2", placeholder = "Phone number" })
+        </div>
+        <div class="form-group">
+            <input type="date" name="DateOfBirth" class="form-control mx-2" placeholder="Birth date" />
+        </div>
+        <div class="form-group">
+            <select name="PositionId" asp-items="ViewBag.listOfPositions" class="form-control mx-2"></select>
+        </div>
+        <div class="form-group">
+            <select name="ProjectId" asp-items="ViewBag.listOfProjects" class="form-control mx-2"></select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().EmployeeId)
+            </th>
+            <th>
+                <a asp-action="Filter" asp-for="Name"
+                   asp-route-SortColName="Name"
+                   asp-route-ColAsc="@ViewBag.ColAsc"
+                   asp-route-Name="@Model.Name"
+                   asp-route-LastName="@Model.LastName"
+                   asp-route-PhoneNumber="@Model.PhoneNumber"
+                   asp-route-DateOfBirth="@Model.DateOfBirth"
+                   asp-route-PositionId="@Model.PositionId"
+                   asp-route-ProjectId="@Model.ProjectId"
+                   asp-route-Page="@Model.Page"
+                   asp-route-PageSize="@Model.PageSize">Name</a>
+            </th>
+            <th>
+                <a asp-action="Filter" asp-for="LastName"
+                   asp-route-SortColName="LastName"
+                   asp-route-ColAsc="@ViewBag.ColAsc"
+                   asp-route-Name="@Model.Name"
+                   asp-route-LastName="@Model.LastName"
+                   asp-route-PhoneNumber="@Model.PhoneNumber"
+                   asp-route-DateOfBirth="@Model.DateOfBirth"
+                   asp-route-PositionId="@Model.PositionId"
+                   asp-route-ProjectId="@Model.ProjectId"
+                   asp-route-Page="@Model.Page"
+                   asp-route-PageSize="@Model.PageSize">Last Name</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().Photo)
+            </th>
+            <th>
+                <a asp-action="Filter" asp-for="DateOfBirth"
+                   asp-route-SortColName="DateOfBirth"
+                   asp-route-ColAsc="@ViewBag.ColAsc"
+                   asp-route-Name="@Model.Name"
+                   asp-route-LastName="@Model.LastName"
+                   asp-route-PhoneNumber="@Model.PhoneNumber"
+                   asp-route-DateOfBirth="@Model.DateOfBirth"
+                   asp-route-PositionId="@Model.PositionId"
+                   asp-route-ProjectId="@Model.ProjectId"
+                   asp-route-Page="@Model.Page"
+                   asp-route-PageSize="@Model.PageSize">Birth date</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().Address)
+            </th>
+            <th>
+                <a asp-action="Filter" asp-for="City"
+                   asp-route-SortColName="City"
+                   asp-route-ColAsc="@ViewBag.ColAsc"
+                   asp-route-Name="@Model.Name"
+                   asp-route-LastName="@Model.LastName"
+                   asp-route-PhoneNumber="@Model.PhoneNumber"
+                   asp-route-DateOfBirth="@Model.DateOfBirth"
+                   asp-route-PositionId="@Model.PositionId"
+                   asp-route-ProjectId="@Model.ProjectId"
+                   asp-route-Page="@Model.Page"
+                   asp-route-PageSize="@Model.PageSize">City</a>
+            </th>
+            <th>
+                <a asp-action="Filter" asp-for="PositionName"
+                   asp-route-SortColName="PositionName"
+                   asp-route-ColAsc="@ViewBag.ColAsc"
+                   asp-route-Name="@Model.Name"
+                   asp-route-LastName="@Model.LastName"
+                   asp-route-PhoneNumber="@Model.PhoneNumber"
+                   asp-route-DateOfBirth="@Model.DateOfBirth"
+                   asp-route-PositionId="@Model.PositionId"
+                   asp-route-ProjectId="@Model.ProjectId"
+                   asp-route-Page="@Model.Page"
+                   asp-route-PageSize="@Model.PageSize">Position</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().ProjectId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().PositionId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Employees)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    <img src="@Url.Action("sendPhoto", new { id = item.EmployeeId })" width="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PositionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+@Html.PagedListPager(Model.Employees, page => Url.Action("Filter", new { page, SortColName = Model.SortColName, ColAsc = Model.ColAsc, Name = Model.Name, LastName = Model.LastName, DateOfBirth = Model.DateOfBirth, PhoneNumber = Model.PhoneNumber, PositionId = Model.PositionId, ProjectId = Model.ProjectId }))
